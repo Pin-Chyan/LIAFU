@@ -54,8 +54,9 @@ function getPro() {
                 
                 <p><b> $ $pro_price</b></p>
 
-                <a href='details.php style='float:left;'>Details</a>
-                <a hred='index.php'><button style='float:right'>Add to Cart</button></a>
+                <a href='details.php?pro_id=$pro_id' style='float:left;'>Details</a>
+
+                <a hred='index.php?pro_id=$pro_id'><button style='float:right'>Add to Cart</button></a>
 
             </div>
         ";
