@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?php include"in.php" ?>
 <link rel="stylesheet" href="style.css" media="all" />
 <html>
     <head>
@@ -12,7 +11,7 @@
             <!-- header start -->
             <div class="header_wrapper">
                 
-                <a href="index.php"><img id="logo" src="../images/logo.png" /></a>
+                <img id="logo" src="../images/logo.png" />
                 <img id="banner" src="../images/logo.png" />
 
             </div>
@@ -51,7 +50,12 @@
 
                 <ul id="cats">
 
-                    <?php getCats();?>
+                    <li><a href="#">Laptops</a></li>
+                    <li><a href="#">Computers</a></li>
+                    <li><a href="#">Mobiles</a></li>
+                    <li><a href="#">Cameras</a></li>
+                    <li><a href="#">iPads</a></li>
+                    <li><a href="#">Tablets</a></li>
 
                 </ul>
 
@@ -59,7 +63,12 @@
 
                 <ul id="cats">
 
-                    <?php getBrands();?>
+                    <li><a href="#">HP</a></li>
+                    <li><a href="#">DELL</a></li>
+                    <li><a href="#">Motorola</a></li>
+                    <li><a href="#">Song Eracson</a></li>
+                    <li><a href="#">LG</a></li>
+                    <li><a href="#">Apple</a></li>
 
                 </ul>
 
@@ -80,49 +89,45 @@
                 </div>
 
 
-                <div id="products_box">
-                    <?php
+                <div id="products_box"> // issue here video 015
+    <?php
+    if(isset($_GET['pro_id'])) {
 
-                    if(isset($_GET['search'])) {
+    $product_id = $_GET['pro_id'];
 
-                    $search_query = $_GET['user_query'];
+    $get_pro = "select * from products where product_id='$product_id'";
 
-                    $get_pro = "select * from products where product_keywords like '%$search_query%'";
+    $run_pro = mysqli_query($con, $get_pro);
 
-                    $run_pro = mysqli_query($con, $get_pro);
-                
-                    while($row_pro=mysqli_fetch_array($run_pro)) {
-                
-                        $pro_id = $row_pro['product_id'];
-                        $pro_cat = $row_pro['product_cat'];
-                        $pro_brand = $row_pro['product_brand'];
-                        $pro_title = $row_pro['product_title'];
-                        $pro_price = $row_pro['product_price'];
-                        $pro_image = $row_pro['product_image'];
-                
-                        echo "
-                            <div id='single_product'>
-                
-                                <h3>$pro_title</h3>
-                
-                                <img src='../admin_area/product_images/$pro_image' width='180' height='180' />
-                                
-                                <p><b> $ $pro_price</b></p>
-                
-                                <a href='details.php?pro_id=$pro_id' style='float:left;'>Details</a>
-                
-                                <a hred='index.php?pro_id=$pro_id'><button style='float:right'>Add to Cart</button></a>
-                
-                            </div>
-                        ";
-                    }
-                    }
-                    ?>
+    while($row_pro=mysqli_fetch_array($run_pro)) {
 
-                    <?php getPro(); ?>
-                    <?php getCatPro(); ?>
-                    <?php GetBrandPro(); ?>
+        $pro_id = $row_pro['product_id'];
+        $pro_title = $row_pro['product_title'];
+        $pro_price = $row_pro['product_price'];
+        $pro_image = $row_pro['product_image'];
+        $pro_desc = $row_pro['product_desc'];
 
+    echo "
+            <div id='single_product'>
+
+                <h3>$pro_title</h3>
+
+                <img src='admin_area/product_images/$pro_image' width='400' height='300' />
+                
+                <p><b> $ $pro_price</b></p>
+
+                <p>$pro_desc</p>
+        
+                <a href='index.php' style='float:left;'>Go Back</a>
+
+                <a hred='index.php?pro_id=$pro_id'><button style='float:right'>Add to Cart</button></a>
+
+            </div>
+        ";
+    }
+    }
+    ?>
+            </div>
                 </div>
 
             </div>
