@@ -2,6 +2,87 @@
 
 $conn = mysqli_connect("localhost","root","","ecommerce");
 
+if (mysqli_connect_errno())
+{
+    echo "Failed to connect to MySQL" . mysqli_connect_error();
+}
+
+//getting user ip address
+function getIp() {
+    $ip = $_SERVER['REMOTE_ADDR'];
+ 
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+ 
+    return $ip;
+}
+
+//creating the shopping cart
+function cart(){
+
+if(isset($_GET['add_cart'])){
+
+    global $con;
+
+    $ip = getIp();
+
+    $pro_id = $_GET['add_cart'];
+
+    $check_pro = "select * from cart where ip_add='$ip' AND p_id='$pro_id'";
+
+    $run_check = mysqli_query($con, $check_pro);
+
+    if(mysqli_num_rows($run_check)>0){
+        echo "";
+    }
+    else {
+        $insert_pro = "insert into cart (p_id, p_add) values ('$pro_id','$ip')";
+
+        $run_pro = mysqli_query($con, $insert_pro);
+
+        echo "<script>window.open('index.php','_self')</script>";
+    }
+
+}
+}
+
+//getting total added items
+function total_items(){
+
+    if(isset($_GET['add_cart'])){
+
+        global $con;
+
+        $ip = getIp();
+
+        $get_items = "select * from cart where ip_add='$ip'";
+
+        $run_items = mysqli_query($con, $get_items);
+
+        $count_items = mysqli_num_rows($run_items);
+        
+        
+
+    }
+    else{
+        
+        global $con;
+        
+        $ip = getIp();
+
+        $get_items = "select * from cart where ip_add='$ip'";
+
+        $run_items = mysqli_query($con, $get_items);
+
+        $count_items = mysqli_num_rows($run_items);
+
+    }
+    echo $count_items;
+}
+
 function getCats(){
     global $con;
     $get_cats = "select * from categories";
@@ -59,7 +140,7 @@ function getPro() {
 
                 <a href='details.php?pro_id=$pro_id' style='float:left;'>Details</a>
 
-                <a hred='index.php?pro_id=$pro_id'><button style='float:right'>Add to Cart</button></a>
+                <a href='index.php?add_cart=$pro_id'><button style='float:right'>Add to Cart</button></a>
 
             </div>
         ";
