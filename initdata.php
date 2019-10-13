@@ -1,15 +1,17 @@
 <?php
-$host = "localhost:3307";
+$host = "localhost:3306";
 $s01 = new mysqli($host,"server01","memes");
 if ($s01)
     echo "connected\n";
+else
+    echo "error";
 mysqli_query($s01,"DROP DATABASE ecom");
 mysqli_query($s01,"CREATE DATABASE ecom");
 $db = mysqli_connect($host,"server01","memes","ecom");
 if ($db)
     echo "connected to data base\n";
 
-$p_id = "product_id INT(100)";
+$p_id = "product_id INT(100) UNSIGNED AUTO_INCREMENT PRIMARY KEY";
 $p_cat = "product_cat INT(100)";
 $p_brand = "product_brand INT(100)";
 $p_title = "product_title VARCHAR(255)";

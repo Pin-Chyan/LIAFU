@@ -1,6 +1,10 @@
 <?php
+$con = mysqli_connect("localhost:3306","server01","memes","ecom");
 
-$con = mysqli_connect("localhost:3307","server01","memes","ecom");
+if (mysqli_connect_errno())
+{
+    echo "Failed to connect to MySQL" . mysqli_connect_error();
+}
 
 function getCats(){
     global $con;
