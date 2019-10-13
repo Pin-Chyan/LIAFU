@@ -37,7 +37,7 @@ $c_contact ="customer_contact VARCHAR(255)";
 $c_image =	"customer_image TEXT(255)";
 $c_adre = "customer_address TEXT(255)";
 
-mysqli_query($db,"CREATE TABLE customers ($c_id,$c_ip,$c_name,$c_email,$c_pass,$c_cont,$c_city,$c_contact,$c_image)");
+mysqli_query($db,"CREATE TABLE customers ($c_id,$c_ip,$c_name,$c_email,$c_pass,$c_cont,$c_city,$c_contact,$c_image,$c_adre)");
 mysqli_query($db,"CREATE TABLE products ($p_id,$p_cat,$p_brand,$p_title,$p_price,$p_desc,$p_image,$p_keywords)");
 mysqli_query($db,"CREATE TABLE brands ($brand_id,$brand_title)");
 mysqli_query($db,"CREATE TABLE category ($cat_id,$cat_title)");
