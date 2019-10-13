@@ -7,6 +7,7 @@ if (mysqli_connect_errno())
     echo "Failed to connect to MySQL" . mysqli_connect_error();
 }
 
+//getting user ip address
 function getIp() {
     $ip = $_SERVER['REMOTE_ADDR'];
  
@@ -19,11 +20,13 @@ function getIp() {
     return $ip;
 }
 
+//creating the shopping cart
 function cart(){
 
 if(isset($_GET['add_cart'])){
 
     global $con;
+
     $ip = getIp();
 
     $pro_id = $_GET['add_cart'];
@@ -44,6 +47,40 @@ if(isset($_GET['add_cart'])){
     }
 
 }
+}
+
+//getting total added items
+function total_items(){
+
+    if(isset($_GET['add_cart'])){
+
+        global $con;
+
+        $ip = getIp();
+
+        $get_items = "select * from cart where ip_add='$ip'";
+
+        $run_items = mysqli_query($con, $get_items);
+
+        $count_items = mysqli_num_rows($run_items);
+        
+        
+
+    }
+    else{
+        
+        global $con;
+        
+        $ip = getIp();
+
+        $get_items = "select * from cart where ip_add='$ip'";
+
+        $run_items = mysqli_query($con, $get_items);
+
+        $count_items = mysqli_num_rows($run_items);
+
+    }
+    echo $count_items;
 }
 
 function getCats(){
