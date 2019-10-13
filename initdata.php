@@ -16,9 +16,9 @@ $p_cat = "product_cat INT(100)";
 $p_brand = "product_brand INT(100)";
 $p_title = "product_title VARCHAR(255)";
 $p_price = "product_price INT(100)";
-$p_desc = "product_desc TEXT(200)";
-$p_image = "product_image TEXT(100)";
-$p_keywords = "product_keywords TEXT(200)";
+$p_desc = "product_desc VARCHAR(200)";
+$p_image = "product_image VARCHAR(100)";
+$p_keywords = "product_keywords VARCHAR(200)";
 
 $brand_id = "brand_id INT(100)";
 $brand_title = "brand_title TEXT(255)";
@@ -34,7 +34,8 @@ $c_pass =   "customer_pass VARCHAR(100)";
 $c_cont =	"customer_country TEXT(100)";
 $c_city =	"customer_city TEXT(100)";
 $c_contact ="customer_contact VARCHAR(255)";
-$c_image =	"customer_image TEXT(100)";
+$c_image =	"customer_image TEXT(255)";
+$c_adre = "customer_address TEXT(255)";
 
 mysqli_query($db,"CREATE TABLE customers ($c_id,$c_ip,$c_name,$c_email,$c_pass,$c_cont,$c_city,$c_contact,$c_image)");
 mysqli_query($db,"CREATE TABLE products ($p_id,$p_cat,$p_brand,$p_title,$p_price,$p_desc,$p_image,$p_keywords)");
