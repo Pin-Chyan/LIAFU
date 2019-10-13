@@ -74,7 +74,7 @@
 
                     <span style="float:right; font-size:18px; padding: 5px; line-height: 40px;">
                         
-                        Welcome Guest! <b style="color:yellow">Shopp4562387659123875692348ing Cart -</b> Total Items: <?php total_items();?> Total Price: <?php total_price();?> <a href="cart.php"
+                        Welcome Guest! <b style="color:yellow">Shopping Cart -</b> Total Items: <?php total_items();?> Total Price: <?php total_price();?> <a href="cart.php"
                         style="color:yellow">Go to Cart</a>
                     
                     </span>
@@ -84,9 +84,21 @@
 
                 <div id="products_box">
 
-                    <?php getPro(); ?>
-                    <?php getCatPro(); ?>
-                    <?php GetBrandPro(); ?>
+            <form action="" method="post" enctype="multipart/form-data">
+
+                    <table align="center" width="700" bgcolor="skyblue">
+                        
+                        <tr align="center">
+                            <th>Remove</th>
+                            <th>Product(S)</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                        </tr>
+
+                    </table>
+
+            </form>
+                    
 
                 </div>
 
