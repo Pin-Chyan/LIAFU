@@ -1,5 +1,5 @@
 <?php 
-$con = mysqli_connect("localhost:3307","server01","memes","ecom");
+$con = mysqli_connect("localhost:3306","server01","memes","ecom");
 
 function getCats(){
     global $con;
