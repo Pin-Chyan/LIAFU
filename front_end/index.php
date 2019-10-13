@@ -51,15 +51,7 @@
 
                 <ul id="cats">
 
-                    <?php 
-                    global $con;
-                    $get_cats = "SELECT * FROM category";
-                    $run_cats = mysqli_query($con, $get_cats);
-                    while ($row_cats=mysqli_fetch_array($run_cats)){
-                        $cat_id = $row_cats['cat_id'];
-                        $cat_title = $row_cats['cat_title'];
-                        echo "<li><a href='#'>$cat_title</a></li>";
-                    }?>
+                    <?php getCats();?>
 
                 </ul>
 
@@ -67,12 +59,7 @@
 
                 <ul id="cats">
 
-                    <li><a href="#">HP</a></li>
-                    <li><a href="#">DELL</a></li>
-                    <li><a href="#">Motorola</a></li>
-                    <li><a href="#">Song Eracson</a></li>
-                    <li><a href="#">LG</a></li>
-                    <li><a href="#">Apple</a></li>
+                    <?php getBrands();?>
 
                 </ul>
 

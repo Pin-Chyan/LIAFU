@@ -30,5 +30,7 @@ mysqli_query($db,"INSERT INTO brands (brand_id,brand_title) VALUES ('2','Razer')
 mysqli_query($db,"INSERT INTO brands (brand_id,brand_title) VALUES ('3','Corsair')");
 mysqli_query($db,"INSERT INTO brands (brand_id,brand_title) VALUES ('4','Intel')");
 mysqli_query($db,"INSERT INTO category (cat_id,cat_title) VALUES ('1','Laptops')");
-mysqli_query($db,"INSERT INTO category (cat_id,cat_title) VALUES ('1','Cameras')");
+mysqli_query($db,"INSERT INTO category (cat_id,cat_title) VALUES ('2','Cameras')");
+mysqli_query($db,"INSERT INTO category (cat_id,cat_title) VALUES ('3','Graphics Cards')");
+mysqli_query($db,"INSERT INTO category (cat_id,cat_title) VALUES ('4','Waifus(one per customer)')");
 ?>
