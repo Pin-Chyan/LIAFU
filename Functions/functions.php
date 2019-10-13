@@ -50,7 +50,7 @@ function getPro() {
 
                 <h3>$pro_title</h3>
 
-                <img src='admin_area/product_images/$pro_image' width='180' height '180' />
+                <img src='admin_area/product_images/$pro_image' width='180' height='180' />
                 
                 <p><b> $ $pro_price</b></p>
 
