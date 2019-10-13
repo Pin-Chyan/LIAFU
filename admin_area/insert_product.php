@@ -8,7 +8,7 @@ include("includes/db.php");
     </head>
 <body>
     <form action="insert_product.php" method="post" enctype="multipart/form-data">
-        <table align="center" width="1000" border="2" bgcolor="orange">
+        <table align="center" width="795" border="2" bgcolor="teal">
             <tr align="center">
                 <td colspan="8"><h2>Insert New Post Here</h2></td>
             </tr>
@@ -83,7 +83,7 @@ include("includes/db.php");
         if($insert_pro){
 
             echo "<script>alert('Product Has been inserted!')</script>";
-            echo "<script>window.open('insert_product.php','self')</script>";
+            echo "<script>window.open('index.php?insert_product','self')</script>";
 
         }
     }
