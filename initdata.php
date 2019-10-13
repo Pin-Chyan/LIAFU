@@ -1,12 +1,11 @@
 <?php
-$host = "localhost:2140";
+$host = "localhost:3307";
 $s01 = new mysqli($host,"server01","memes");
 if ($s01)
     echo "connected\n";
-mysqli_query($s01,"DROP DATABASE testcom");
-if (mysqli_query($s01,"CREATE DATABASE testcom"))
-    echo "database created\n";
-$db = mysqli_connect($host,"server01","memes","testcom");
+mysqli_query($s01,"DROP DATABASE ecom");
+mysqli_query($s01,"CREATE DATABASE ecom");
+$db = mysqli_connect($host,"server01","memes","ecom");
 if ($db)
     echo "connected to data base\n";
 
@@ -26,4 +25,10 @@ $cat_title = "cat_title TEXT(100)";
 mysqli_query($db,"CREATE TABLE products ($p_id,$p_cat,$p_brand,$p_title,$p_price,$p_desc,$p_image,$p_keywords)");
 mysqli_query($db,"CREATE TABLE brands ($brand_id,$brand_title)");
 mysqli_query($db,"CREATE TABLE category ($cat_id,$cat_title)");
+mysqli_query($db,"INSERT INTO brands (brand_id,brand_title) VALUES ('1','Asus')");
+mysqli_query($db,"INSERT INTO brands (brand_id,brand_title) VALUES ('2','Razer')");
+mysqli_query($db,"INSERT INTO brands (brand_id,brand_title) VALUES ('3','Corsair')");
+mysqli_query($db,"INSERT INTO brands (brand_id,brand_title) VALUES ('4','Intel')");
+mysqli_query($db,"INSERT INTO category (cat_id,cat_title) VALUES ('1','Laptops')");
+mysqli_query($db,"INSERT INTO category (cat_id,cat_title) VALUES ('1','Cameras')");
 ?>
