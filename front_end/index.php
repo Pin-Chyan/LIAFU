@@ -67,6 +67,8 @@
             </div>
 
             <div id="content_area">
+                
+                <?php cart(); ?>
 
                 <div id="shopping_cart">
 
