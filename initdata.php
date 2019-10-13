@@ -1,5 +1,5 @@
 <?php
-$host = "localhost:3307";
+$host = "localhost:3306";
 $s01 = new mysqli($host,"server01","memes");
 if ($s01)
     echo "connected\n";
