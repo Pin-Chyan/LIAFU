@@ -17,18 +17,19 @@
         $i = 0;
         while ($row_pro=mysqli_fetch_array($run_pro))
         {
+            $pro_id = $row_pro['product_id'];
             $pro_title = $row_pro['product_title'];
             $pro_image = $row_pro['product_image'];
             $pro_price = $row_pro['product_price'];
             $i++;
-        }
     ?>
-    <tr>
-        <td><?php echo $i; ?></td>
+    <tr align="center">
+        <td><?php echo $pro_id; ?></td>
         <td><?php echo $pro_title; ?></td>
-        <td><?php echo $pro_image; ?></td>
+        <td><img src="product_images/<?php echo $pro_image; ?>" width="60" height="60"/></td>
         <td><?php echo $pro_price; ?></td>
-        <td><a href="index.php?edit_pro">Edit</a></td>
-        <td><a href="index.php?delete_pro">Delete</a></td>
+        <td><a href="index.php?edit_pro=<?php echo $pro_id; ?>">Edit</a></td>
+        <td><a href="delete_pro.php?delete_pro=<?php echo $pro_id; ?>">Delete</a></td>
     </tr>
+    <?php } ?>
 </table>

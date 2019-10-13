@@ -47,7 +47,7 @@ body {background:skyblue;}
 
 #left{
     width:790px;
-    height:600px;
+    height:800px;
     background-image:url(../images/bg-body.png);
     background-size: 100%;
     background-repeat: no-repeat;
@@ -57,7 +57,7 @@ body {background:skyblue;}
 
 #right{
     width:200px;
-    height:600px;
+    height:800px;
     float:right;
     border-left:5px groove orange;
     background-color: teal;
