@@ -1,26 +1,52 @@
 <!DOCTYPE html>
 <?php
-include("includes/db.php");
+    include("includes/db.php");
+    if(isset($_GET['edit_pro']))
+    {
+        $get_id = $_GET['edit_pro'];
+        $get_pro = "select * from products where product_id='$get_id'";
+        $run_pro = mysqli_query($con, $get_pro);
+        $i = 0;
+        $row_pro=mysqli_fetch_array($run_pro);
+            $pro_id = $row_pro['product_id'];
+            $pro_title = $row_pro['product_title'];
+            $pro_image = $row_pro['product_image'];
+            $pro_price = $row_pro['product_price'];
+            $pro_desc = $row_pro['product_desc'];
+            $pro_keywords = $row_pro['product_keywords'];
+            $pro_cat = $row_pro['product_cat'];
+            $pro_brand = $row_pro['product_brand'];
+            
+            $get_cat = "select * from category where cat_id='$pro_cat'";
+            $run_cat=mysqli_query($con, $get_cat);
+            $row_cat=mysqli_fetch_array($run_cat);
+            $category_title = $row_cat['cat_title'];
+
+            $get_brand = "select * from brands where brand_id='$pro_brand'";
+            $run_brand=mysqli_query($con, $get_brand);
+            $row_brand=mysqli_fetch_array($run_brand);
+            $brand_title = $row_brand['brand_title'];
+    }
 ?>
 <html>
     <head>
-        <title>Insert Product</title>
+        <title>Update Product</title>
     </head>
 <body>
     <form action="insert_product.php" method="post" enctype="multipart/form-data">
         <table align="center" width="795" border="2" bgcolor="teal">
             <tr align="center">
-                <td colspan="8"><h2>Insert New Post Here</h2></td>
+                <td colspan="8"><h2>Edit & Update Product</h2></td>
             </tr>
             <tr>
                 <td align="right"><b>Product Title:</b></td>
-                <td><input type="text" name="product_title" size="60" required /></td>
+                <td><input type="text" name="product_title" size="60" value="<?php echo $pro_title; ?>"/></td>
             </tr>
             <tr>
                 <td align="right"><b>Product Category:</b></td>
                 <td>
-                    <select name="product_cat" required>
-                        <option>Select a Category</option>
+                    <select name="product_cat" >
+                        <option><?php echo $category_title; ?></option>
                         <?php
                             $get_cats = "select * from category";
                             $run_cats = mysqli_query($con, $get_cats);
@@ -37,8 +63,8 @@ include("includes/db.php");
             <tr>
                 <td align="right"><b>Product Brand:</b></td>
                 <td>
-                    <select name="product_brand" required>
-                        <option>Select a Brand</option>
+                    <select name="product_brand" >
+                        <option><?php echo $brand_title; ?></option>
                         <?php 
                             $get_brands = "select * from brands";
                             $run_brands = mysqli_query($con, $get_brands);
@@ -54,22 +80,23 @@ include("includes/db.php");
             </tr>       
             <tr>
                 <td align="right"><b>Product Image:</b></td>
-                <td><input type="file" name="product_image" required/></td>
+                <td><input type="file" name="product_image" /><img src="product_images/<?php echo $pro_image; ?>"
+                width="60" height="60"/></td>
             </tr>       
             <tr>
                 <td align="right"><b>Product Price:</b></td>
-                <td><input type="text" name="product_price" required/></td>
+                <td><input type="text" name="product_price" value="<?php echo $pro_price; ?>"/></td>
             </tr>       
             <tr>
                 <td align="right"><b>Product Description:</b></td>
-                <td><textarea name="product_desc" cols="20" rows="10"></textarea></td>
+                <td><textarea name="product_desc" cols="20" rows="10"><?php echo $pro_desc; ?></textarea></td>
             </tr> 
             <tr>
                 <td align="right"><b>Product Keyword:</b></td>
-                <td><input type="text" name="product_keywords" required/></td>
+                <td><input type="text" name="product_keywords" value="<?php echo $pro_keywords; ?>"/></td>
             </tr>  
             <tr align="center">
-                <td colspan = "7"><input type="submit" name="insert_post" value="Insert Now"/></td>
+                <td colspan = "7"><input type="submit" name="update_product" value="Update Product"/></td>
             </tr>
         </table>
 </body>
