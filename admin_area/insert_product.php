@@ -85,24 +85,23 @@ include("includes/db.php");
         $product_desc = $_POST['product_desc'];
         $product_keywords = $_POST['product_keywords'];
         
-        echo $product_title."\n";
+        //echo $product_title."\n";
         //getting the image from the field
         $product_image = $_FILES['product_image']['name'];
         $product_image_tmp = $_FILES['product_image']['tmp_name'];
 
         move_uploaded_file($product_image_tmp,"product_images/$product_image");
 
-        $insert_product = "INSERT INTO products ";
+        $insert_product = "insert into products ";
         $prod = "(product_cat,product_brand,product_title,product_price,product_desc,product_image,product_keywords) values ";
         $end = "('$product_cat','$product_brand','$product_title','$product_price','$product_desc','$product_image','$product_keywords')";
 
         $insert_pro = mysqli_query($con, $insert_product.$prod.$end);
 
-        if($insert_pro){
-
+        if($insert_pro)
+        {
             echo "<script>alert('Product Has been inserted!')</script>";
-            echo "<script>window.open('index.php?insert_product','self')</script>";
-
+            echo "<script>window.open('index.php?insert_product','_self')</script>";
         }
     }
 ?>

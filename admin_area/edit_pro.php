@@ -33,7 +33,7 @@
         <title>Update Product</title>
     </head>
 <body>
-    <form action="insert_product.php" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data">
         <table align="center" width="795" border="2" bgcolor="teal">
             <tr align="center">
                 <td colspan="8"><h2>Edit & Update Product</h2></td>
@@ -102,9 +102,10 @@
 </body>
 </html>
 <?php
-    if (isset($_POST['insert_post'])){
+    if (isset($_POST['update_product'])){
 
         //getting the text data from the fields
+        $update_id = $pro_id;
         $product_title = $_POST['product_title'];
         $product_cat = $_POST['product_cat'];
         $product_brand = $_POST['product_brand'];
@@ -112,24 +113,23 @@
         $product_desc = $_POST['product_desc'];
         $product_keywords = $_POST['product_keywords'];
         
-        echo $product_title."\n";
+        //echo $product_title."\n";
         //getting the image from the field
         $product_image = $_FILES['product_image']['name'];
         $product_image_tmp = $_FILES['product_image']['tmp_name'];
 
         move_uploaded_file($product_image_tmp,"product_images/$product_image");
 
-        $insert_product = "INSERT INTO products ";
-        $prod = "(product_cat,product_brand,product_title,product_price,product_desc,product_image,product_keywords) values ";
-        $end = "('$product_cat','$product_brand','$product_title','$product_price','$product_desc','$product_image','$product_keywords')";
+        $update_product = "update products set product_cat='$product_cat',product_brand='$product_brand',
+        product_title='$product_title',product_price='$product_price',product_desc='$product_desc',
+        product_image='$product_image',product_keywords='$product_keywords' where product_id='$update_id'";
+        
+        $run_product = mysqli_query($con, $update_product);
 
-        $insert_pro = mysqli_query($con, $insert_product.$prod.$end);
-
-        if($insert_pro){
-
-            echo "<script>alert('Product Has been inserted!')</script>";
-            echo "<script>window.open('index.php?insert_product','self')</script>";
-
+        if($run_product)
+        {
+            echo "<script>alert('Product Has been updated!')</script>";
+            echo "<script>window.open('index.php?view_products','_self')</script>";
         }
     }
 ?>
